@@ -54,23 +54,62 @@ class ADXL345:
         self.set_bandwidth_rate(BW_RATE_100HZ)
         self.set_range(RANGE_8G)
         self.enable_measurement()
-        self.x_measurement = 0
-        self.y_measurement = 0
-        self.z_measurement = 0
         self.mag_measurement = 0
 
     def enable_measurement(self):
-        """Enables Measurement Readings"""
+        """
+        Initiates and enables the measurment of data from the accelerometer
+
+        Runs at class __init__.
+
+        Parameters
+        ----------
+        self : Part of class ADXL345
+
+        Returns
+        -------
+        None
+
+        """
         BUS.write_byte_data(self.address, POWER_CTL, MEASURE)
 
     def set_bandwidth_rate(self, rate_flag):
-        """set the measurement range for 10-bit readings"""
+        """
+        Set the measurement range of the accelerometer for 10-bit readings.
+
+        Runs at class __init__.
+
+        Parameters
+        ----------
+        self : Part of class ADXL345
+
+        Returns
+        -------
+        None
+
+        """
         BUS.write_byte_data(self.address, BW_RATE, rate_flag)
 
     def set_range(self, range_flag):
-        """returns the current reading from the sensor for each axis parameter gforce:
+        """
+        Original developer notes:
+        returns the current reading from the sensor for each axis parameter gforce:
         #    False (default): result is returned in m/s^2
-        #    True           : result is returned in gs"""
+        #    True           : result is returned in gs
+
+        Determines the range values for the accelerometer.
+
+        Runs at class __init__.
+
+        Parameters
+        ----------
+        self : Part of class ADXL345
+
+        Returns
+        -------
+        None
+
+        """
         value = BUS.read_byte_data(self.address, DATA_FORMAT)
 
         value &= ~0x0F;
@@ -80,7 +119,22 @@ class ADXL345:
         BUS.write_byte_data(self.address, DATA_FORMAT, value)
 
     def get_axes(self, gforce=False):
-        """Returns the measurement of the axes of the accelerometer in a dictionary (x,y,z)"""
+        """
+        Returns the measurement of the axes of the accelerometer in a dictionary (x,y,z)
+
+        Parameters
+        ----------
+        self : Part of class ADXL345
+
+        gforce=False : boolean
+            If true, outputs measurement in Gs. Else measures in m/s^2
+
+        Returns
+        -------
+        dict
+            {"x": x measurement, "y": y measurement, "z": z measurement}
+
+        """
         _bytes = BUS.read_i2c_block_data(self.address, AXES_DATA, 6)
 
         _x = _bytes[0] | (_bytes[1] << 8)
@@ -111,12 +165,47 @@ class ADXL345:
         return {"x": _x, "y": _y, "z": _z}
 
     def string_output(self, gees=False):
-        """Returns a string 'time, x, y, z'"""
+        """
+        Returns a string 'time, x, y, z'
+
+        Use mainly for logging onto .txt files
+
+        Parameters
+        ----------
+        self : Part of class ADXL345
+
+        gees=False : bool
+            If true, outputs measurement in Gs. Else measures in m/s^2
+
+        Returns
+        -------
+        str
+            'time, x measurement, y measurment, z measurement'
+
+        """
         axes = self.get_axes(gees)
         return "{},{},{},{}".format(time.time(), axes['x'], axes['y'], axes['z'])
 
     def accel_magnitude(self, gees=False):
-        """Returns accelerometer magnitude"""
+        """
+        Returns acceleration magnitude
+
+        Parameters
+        ----------
+        self : Part of class ADXL345
+
+        gees=False : bool
+            If true, outputs measurement in Gs. Else measures in m/s^2
+
+        Returns
+        -------
+        float
+            If measured in Gs:
+                |sqrt(x measurement^2 + y measurement^2 + z measurment^2) - 1|
+            If measured in m/s^2:
+                |sqrt(x measurement^2 + y measurement^2 + z measurment^2) - 9.81|
+
+        """
         axes = self.get_axes(gees)
         if gees:
             mag = abs(math.sqrt(axes['x']**2 + axes['y']**2 + axes['z']**2)-1)
@@ -124,10 +213,33 @@ class ADXL345:
             mag = abs(math.sqrt(axes['x']**2 + axes['y']**2 + axes['z']**2)-9.81)
         return mag
 
-    def accel_startup(self, gees=False):
-        """Reads out a couple accelerometer values (disable with noise = False)
-        and checks for errors."""
+    def accel_startup(self, check, gees=False):
+        """
+        initiates accelerometers and checks for accelerometer measurement anomalies.
+
+        Takes the magnitude measurment from the data from the accelerometer and checks them
+        against the check value given by the user.
+
+        Parameters
+        ----------
+        self : Part of class ADXL345
+
+        check : float (or int)
+            The value to check the measurment of the accelerometer against. If measure
+            is greater than check raises message.
+
+        gees=False : bool
+            If true, outputs measurement in Gs. Else measures in m/s^2
+
+        Returns
+        -------
+        str
+            If measured magnitude > check:
+                #Accel Value Startup Mag > check value
+            else:
+                "#Checked and ready to go"
+        """
         mag = self.accel_magnitude(gees)
-        if mag > 5:
-            print("#Accel Value Startup Mag > 5")
-        return "#Time,x,y,z"
+        if mag > check:
+            return "#Accel Value Startup Mag > {}".format(check)
+        return "#Checked and ready to go"
