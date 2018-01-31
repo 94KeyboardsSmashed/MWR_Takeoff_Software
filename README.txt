@@ -1,0 +1,44 @@
+##Madison West Rocketry Team Hurgus Payload Coding
+Welcome to our repository. We are Madision West Rocketry and this is the coding for our
+rocket payload experiment titled "Study of Damping Efficiency in Various Liquids." Considerable
+effort was made to keep only the nessesary files for this repository. For any test files and examples
+please go to https://github.com/94KeyboardsSmashed/SLI2017_Hurgus_Madison.
+
+##Project Description
+
+##Prerequisites
+In order to install the dependancies for this program do (sh install.sh). If problems arise, manually install
+the following dependancies
+
+#Accelerometer Dependancies
+python-smbus
+python3-smbus
+RPi.GPIO
+cap1xxx
+
+#Bluetooth Dependancies
+PyBluez
+
+#Neopixel Depenancies
+build-essential 
+python-dev 
+git 
+scons
+swig
+git rpi_ws281x repo (https://github.com/jgarff/rpi_ws281x.git)
+
+##Data Collection
+The files in the data collection are the ones that will be used to read accelerometer readout from the payload
+sensors. Files include a revamped portion of the rpi_ws281x library to control neopixel rings, and a accelerometer
+readout library that interprets the accelerometers that will be attached in an i2c interface. The files VDD.py 
+and GND.py will be used to initiate the payload experiment and the readout will be put onto log.txt files. To run
+the whole setup, just go into the directory and type (sh run_experiment.sh).
+
+##Sockets
+These are the bluetooth socket programs that we will use to transfer data between the pi's. Currently under
+construction.
+
+##To do
+Integrate bluetooth into data collection
+Create a system to find a random host for bluetooth communication
+Hardware tests. Two neopixels possible?
