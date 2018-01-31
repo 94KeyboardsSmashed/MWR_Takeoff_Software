@@ -82,13 +82,13 @@ if __name__ == '__main__':
 
     while time.time() < TEST_TIMER:
         #Process light color by finding adverages
-        YANGTZE_PER = INDUS.accel_magnitude()*10
+        YANGTZE_PER = YANGTZE.accel_magnitude()*10
         if YANGTZE_PER > 100:
             YANGTZE_PER = 100
         YAVG_BUFF.append(YANGTZE_PER)
         YMAG_AVG = sum(list(YAVG_BUFF))/len(list(YAVG_BUFF))
 
         #Show averages on color gradient
-        KATANA.color_gradient_rg(IMAG_AVG)
+        KATANA.color_gradient_rg(YMAG_AVG)
     # Shutdown neopixel rings
     KATANA.neopixel_shutdown(st.MAGENTA)

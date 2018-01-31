@@ -41,10 +41,8 @@ Wiring Details:
 """
 
 import sys
-import time
 import collections
 import raspi_accel_lib
-import neopixel_lib as neopxl
 import settings as st
 
 if __name__ == '__main__':
@@ -57,30 +55,14 @@ if __name__ == '__main__':
     INDUS = raspi_accel_lib.ADXL345(0x53)
 
     # Define Neopixels (named after swords)
-    KATANA = neopxl.Adafruit_NeoPixel(st.LED_COUNT_1, st.LED_PIN_1, st.LED_FREQ_HZ_1,
-                                      st.LED_DMA_1, st.LED_INVERT_1, st.LED_BRIGHTNESS_1, 0)
+    # KATANA = neopxl.Adafruit_NeoPixel(st.LED_COUNT_1, st.LED_PIN_1, st.LED_FREQ_HZ_1,
+    #                                  st.LED_DMA_1, st.LED_INVERT_1, st.LED_BRIGHTNESS_1, 0)
 
     # Startup Neopixel
-    KATANA.neopixel_startup(st.BLUE, st.GREEN, st.RED)
+    # KATANA.neopixel_startup(st.BLUE, st.GREEN, st.RED)
 
     # Startup Accelerometer
     INDUS.accel_startup(st.GFORCE)
-
-    # Make testable at start
-    TEST_TIMER = time.time() + st.TEST_LENGTH
-
-    while time.time() < TEST_TIMER:
-        #Process light color by finding averages
-        PER = INDUS.accel_magnitude()*10
-        if PER > 100:
-            PER = 100
-        AVG_BUFF.append(PER)
-        MAG_AVG = sum(list(AVG_BUFF))/len(list(AVG_BUFF))
-
-        #Show averages on color gradient
-        KATANA.color_gradient_rg(MAG_AVG)
-    # Shutdown neopixel rings
-    KATANA.neopixel_shutdown(st.MAGENTA)
 
     #Initalize .txt file by writing headers
     print('#Time,X,Y,Z')
