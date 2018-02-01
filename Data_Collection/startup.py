@@ -78,6 +78,7 @@ if __name__ == '__main__':
         KATANA.color_gradient_rg(IMAG_AVG)
 
     # Make Yangtze testable second
+    KATANA.color_wipe(st.MAGENTA)
     TEST_TIMER = time.time() + st.TEST_LENGTH
 
     while time.time() < TEST_TIMER:
