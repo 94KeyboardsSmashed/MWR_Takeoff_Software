@@ -42,6 +42,7 @@ Wiring Details:
 
 import sys
 import collections
+from os import path
 import raspi_accel_lib
 import settings as st
 
@@ -96,4 +97,8 @@ if __name__ == '__main__':
         if RESTING >= st.RESTING_THRESHOLD:
             print("#Landed")
             sys.stdout.flush()
+            break
+	
+        if path.getsize('loggnd.txt') > st.MEM_MAX:
+            print('# Memory Stop')
             break

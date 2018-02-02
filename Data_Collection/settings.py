@@ -40,6 +40,9 @@ LANDING_SENSE = -1
 #: below the Landing Threshold for the accelerometer to stop recording
 RESTING_THRESHOLD = 2500
 
+#: Max amount of memory available for each file in bytes
+MEM_MAX = 1000000
+
 ##Neopixel Settings
 #: Amount of time needed in testing stage (seconds)
 TEST_LENGTH = 10
