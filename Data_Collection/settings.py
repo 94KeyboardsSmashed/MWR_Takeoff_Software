@@ -31,7 +31,7 @@ ACCEL_RESPONSE = 10
 TAKEOFF_THRESHOLD = 3
 
 #: Amount of G deviation from zero that counts the vehicle as 'landed'
-LANDING_THRESHOLD = 0.5
+LANDING_THRESHOLD = 0.1
 
 #: Amount subtracted from landing count when bumped. Set negative number to reset from 0
 LANDING_SENSE = -1
@@ -57,7 +57,7 @@ LED_COUNT_2 = 24
 LED_PIN_2 = 13
 LED_FREQ_HZ_2 = 800000
 LED_DMA_2 = 5
-LED_BRIGHTNESS_2 = 255
+LED_BRIGHTNESS_2 = 16
 LED_INVERT_2 = False
 
 #Color Values

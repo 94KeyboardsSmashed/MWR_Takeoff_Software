@@ -34,7 +34,15 @@ readout library that interprets the accelerometers that will be attached in an i
 and GND.py will be used to initiate the payload experiment and the readout will be put onto log.txt files. To run
 the whole setup, just go into the directory and type 
 ```
-sh run_experiment.sh).
+sudo sh run_experiment.sh
+```
+Individual files can be run as follows:
+```
+sudo nice -20 python gnd.py > logGND.txt
+```
+More than two files can be run like this:
+```
+sudo nice -20 python gnd.py > logGND.txt & python vdd.py > logVDD.txt
 ```
 
 ## Sockets
@@ -44,6 +52,7 @@ construction.
 ## License
 This software and all associated files are under the MIT license.
 ## To do
-Integrate bluetooth into data collection
-Create a system to find a random host for bluetooth communication
-Hardware tests. Two neopixels possible?
+- Integrate bluetooth into data collection
+- Create a system to find a random host for bluetooth communication
+- Hardware tests. Two neopixels possible?
+- Run a start up script with neopixel lights for accelerometer verification

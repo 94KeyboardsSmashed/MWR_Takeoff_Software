@@ -117,6 +117,7 @@ class Adafruit_NeoPixel(object):
         """
         # Create ws2811_t structure and fill in parameters.
         self._leds = ws.new_ws2811_t()
+        self.brightness = brightness
 
         # Initialize the channels to zero
         for channum in range(2):
@@ -369,7 +370,7 @@ class Adafruit_NeoPixel(object):
         for __ in range(0, iterations):
             for i in range(self.num_pixels()):
                 self.set_pixel_color(i, color)
-                self.set_brightness(255)
+                self.set_brightness(self.brightness)
                 self.show()
                 time.sleep(wait_ms/1000.0)
 
@@ -397,7 +398,7 @@ class Adafruit_NeoPixel(object):
         """
         try:
             self.begin()
-            self.set_brightness(255)
+            self.set_brightness(self.brightness)
             self.rainbow_cycle(10, 1)
             time.sleep(0.5)
             self.color_wipe(boot_col, 10)
@@ -419,7 +420,7 @@ class Adafruit_NeoPixel(object):
         None
         """
         for __ in range(self.num_pixels()):
-            self.set_brightness(255)
+            self.set_brightness(self.brightness)
             self.show()
 
     def neopixel_off(self):
