@@ -31,7 +31,7 @@ ACCEL_RESPONSE = 10
 TAKEOFF_THRESHOLD = 3
 
 #: Amount of G deviation from zero that counts the vehicle as 'landed'
-LANDING_THRESHOLD = 0.1
+LANDING_THRESHOLD = 0
 
 #: Amount subtracted from landing count when bumped. Set negative number to reset from 0
 LANDING_SENSE = -1
