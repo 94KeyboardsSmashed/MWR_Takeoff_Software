@@ -31,18 +31,30 @@ the following dependancies
 The files in the data collection are the ones that will be used to read accelerometer readout from the payload
 sensors. Files include a revamped portion of the rpi_ws281x library to control neopixel rings, and a accelerometer
 readout library that interprets the accelerometers that will be attached in an i2c interface. The files VDD.py 
-and GND.py will be used to initiate the payload experiment and the readout will be put onto log.txt files. To run
-the whole setup, just go into the directory and type 
+and GND.py will be used to initiate the payload experiment and the readout will be put onto log.txt files. 
+### To run the whole setup 
 ```
 sudo sh run_experiment.sh
 ```
-Individual files can be run as follows:
+### To run individual files
 ```
-sudo nice -20 python gnd.py > logGND.txt
+sudo python3 vdd.py
 ```
-More than two files can be run like this:
+or
 ```
-sudo nice -20 python gnd.py > logGND.txt & python vdd.py > logVDD.txt
+sudo python3 gnd.py
+```
+### To run individual files and write to log
+```
+sudo python3 gnd.py > loggnd.txt
+```
+or
+```
+sudo python3 vdd.py > logvdd.txt
+```
+### More than two files can be run and logged like this:
+```
+sudo nice -20 python3 gnd.py > loggnd.txt & python3 vdd.py > logvdd.txt
 ```
 
 ## Sockets
@@ -51,6 +63,7 @@ construction.
 
 ## License
 This software and all associated files are under the MIT license.
+
 ## To do
 - Integrate bluetooth into data collection
 - Create a system to find a random host for bluetooth communication

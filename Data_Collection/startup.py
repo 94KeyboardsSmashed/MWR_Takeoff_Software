@@ -24,18 +24,17 @@ Wiring Details:
 
     GPIO 1 setup: ADXL - Pi (0x53)
 
-    GND - GND
-    3V - 3V3
+    GND, SDO - GND
+    VCC, CS - 3V3
     SDA - SDA (GPIO 2)
     SCL - SCL (GPIO 3)
 
     GPIO 2 setup: ADXL - Pi (0x1D)
 
     GND - GND
-    3V - 3V3
+    VCC, CS, SDO - 3V3
     SDA - SDA
     SCL - SCL
-    SDO - 3V3
 """
 import time
 import collections

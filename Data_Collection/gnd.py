@@ -22,22 +22,21 @@ Run with this command to write to a .txt file:
 Wiring Details:
 
     Connect neopixel to ground, 5v, and physical pin 12 (gpio pin 18) (0)
-    Connect neopixel to ground, 5v, and physical pin 33 (gpio pin 13) (1)
+    #(not needed) Connect neopixel to ground, 5v, and physical pin 33 (gpio pin 13) (1)
 
     GPIO 1 setup: ADXL - Pi (0x53)
 
-    GND - GND
-    3V - 3V3
+    GND, SDO - GND
+    VCC, CS - 3V3
     SDA - SDA (GPIO 2)
     SCL - SCL (GPIO 3)
 
     GPIO 2 setup: ADXL - Pi (0x1D)
 
     GND - GND
-    3V - 3V3
+    VCC, CS, SDO - 3V3
     SDA - SDA
     SCL - SCL
-    SDO - 3V3
 """
 
 import sys
