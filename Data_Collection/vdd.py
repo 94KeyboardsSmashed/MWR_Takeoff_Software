@@ -99,7 +99,7 @@ if __name__ == '__main__':
             print("#Landed")
             sys.stdout.flush()
             break
-		
+
         if path.getsize('logvdd.txt') > st.MEM_MAX:
             print('# Memory Stop')
             break

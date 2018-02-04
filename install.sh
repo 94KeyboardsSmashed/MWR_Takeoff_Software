@@ -8,6 +8,7 @@ sudo pip install RPi.GPIO
 sudo pip install cap1xxx
 
 #Bluetooth
+sudo apt-get install libbluetooth-dev
 sudo pip3 install PyBluez
 
 # Install neopixel depenancies

@@ -41,7 +41,7 @@ LANDING_SENSE = -1
 RESTING_THRESHOLD = 2500
 
 #: Max amount of memory available for each file in bytes
-MEM_MAX = 1000000
+MEM_MAX = 5000000
 
 ##Neopixel Settings
 #: Amount of time needed in testing stage (seconds)
