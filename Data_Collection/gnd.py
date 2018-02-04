@@ -22,7 +22,7 @@ Run with this command to write to a .txt file:
 Wiring Details:
 
     Connect neopixel to ground, 5v, and physical pin 12 (gpio pin 18) (0)
-    #(not needed) Connect neopixel to ground, 5v, and physical pin 33 (gpio pin 13) (1)
+    Connect neopixel to ground, 5v, and physical pin 33 (gpio pin 13) (1)
 
     GPIO 1 setup: ADXL - Pi (0x53)
 
@@ -52,17 +52,10 @@ if __name__ == '__main__':
     RESTING = 0
 
     # Define accelerometers (named after rivers)
-    INDUS = raspi_accel_lib.ADXL345(0x53)
-
-    # Define Neopixels (named after swords)
-    # KATANA = neopxl.Adafruit_NeoPixel(st.LED_COUNT_1, st.LED_PIN_1, st.LED_FREQ_HZ_1,
-    #                                  st.LED_DMA_1, st.LED_INVERT_1, st.LED_BRIGHTNESS_1, 0)
-
-    # Startup Neopixel
-    # KATANA.neopixel_startup(st.BLUE, st.GREEN, st.RED)
+    YANGTZE = raspi_accel_lib.ADXL345(0x53)
 
     # Startup Accelerometer
-    INDUS.accel_startup(st.GFORCE)
+    YANGTZE.accel_startup(st.GFORCE)
 
     #Initalize .txt file by writing headers
     print('#Time,X,Y,Z')
@@ -71,8 +64,8 @@ if __name__ == '__main__':
     # Store up data in circular buffer on launch pad and
     # flush when launched.
     while True:
-        CIRCULAR_BUFF.append(INDUS.string_output())
-        if INDUS.accel_magnitude(True) > st.TAKEOFF_THRESHOLD:
+        CIRCULAR_BUFF.append(YANGTZE.string_output())
+        if YANGTZE.accel_magnitude(True) > st.TAKEOFF_THRESHOLD:
             BUFFER_DATA = list(CIRCULAR_BUFF)
             print('\n'.join(BUFFER_DATA))
             sys.stdout.flush()
@@ -80,10 +73,10 @@ if __name__ == '__main__':
 
     # Record Data until vehicle is deemed to be "landed"
     while True:
-        print(INDUS.string_output(st.GFORCE))
+        print(YANGTZE.string_output(st.GFORCE))
         sys.stdout.flush()
 
-        if INDUS.accel_magnitude(True) < st.LANDING_THRESHOLD:
+        if YANGTZE.accel_magnitude(True) < st.LANDING_THRESHOLD:
             RESTING += 1
         elif st.LANDING_SENSE < 0:
             RESTING = 0
@@ -97,7 +90,7 @@ if __name__ == '__main__':
             print("#Landed")
             sys.stdout.flush()
             break
-
+			
         if path.getsize('loggnd.txt') > st.MEM_MAX:
             print('# Memory Stop')
             break

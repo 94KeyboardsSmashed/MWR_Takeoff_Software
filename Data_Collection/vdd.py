@@ -21,13 +21,10 @@ Run with this command to write to a .txt file:
 
 Wiring Details:
 
-    Connect neopixel to ground, 5v, and physical pin 12 (gpio pin 18) (0)
-    #(not needed) Connect neopixel to ground, 5v, and physical pin 33 (gpio pin 13) (1)
-
     GPIO 1 setup: ADXL - Pi (0x53)
 
-    GND, SDO - GND
-    VCC, CS - 3V3
+    GND - GND
+    3V - 3V3
     SDA - SDA (GPIO 2)
     SCL - SCL (GPIO 3)
 
@@ -53,13 +50,6 @@ if __name__ == '__main__':
 
     # Define accelerometers (named after rivers)
     INDUS = raspi_accel_lib.ADXL345(0x1D)
-
-    # Define Neopixels (named after swords)
-    # KATANA = neopxl.Adafruit_NeoPixel(st.LED_COUNT_2, st.LED_PIN_2, st.LED_FREQ_HZ_2,
-    #                                  st.LED_DMA_2, st.LED_INVERT_2, st.LED_BRIGHTNESS_2, 1)
-
-    # Startup Neopixel
-    # KATANA.neopixel_startup(st.BLUE, st.GREEN, st.RED)
 
     # Startup Accelerometer
     INDUS.accel_startup(st.GFORCE)
@@ -98,7 +88,7 @@ if __name__ == '__main__':
             print("#Landed")
             sys.stdout.flush()
             break
-
+		
         if path.getsize('logvdd.txt') > st.MEM_MAX:
             print('# Memory Stop')
             break

@@ -4,6 +4,17 @@ request to keep detailed documentation for our Flight Readiness Review (FRR).
 
 ## [Unreleased]
 
+## [Alpha v0.0.5] - 2018-02-04
+### Removed
+- Removed file startup.py
+- Removed all references to neopixels in vdd.py and gnd.py
+### Changed
+- Restructured changelog format
+- run_experiment.sh now prints "Working..." instead of executing startup.py
+- Max memory limit that stops gnd.py based on the size of loggnd.txt shortened from 5 MB to 2 MB (around 6:40 min)
+- Max memory limit that stops vdd.py based on the size of logvdd.txt shortened from 5 MB to 2 MB (around 6:40 min)
+- Renamed accelerometer with address (0x53) from INDUS to YANGTZEE
+
 ## [Alpha v0.0.4] - 2018-02-03
 ### Added
 - libbluetooth-dev added in install.sh as dependency.
@@ -26,6 +37,7 @@ request to keep detailed documentation for our Flight Readiness Review (FRR).
 - Brightness of neopixel now depends fully on brightness value set at class init.
 - startup.py fully integrated into run_experiment.sh file. Now runs properly at startup 
 - Neopixel init brightness lowered from 255 to 16
+- Changed accelerometer hardware from Adafruit brand to Sparkfun brand
 - Expanded To Do section of readme file
 
 ## [Alpha v0.0.2] - 2018-01-31
@@ -45,10 +57,8 @@ request to keep detailed documentation for our Flight Readiness Review (FRR).
 - Licensed code under MIT license.
 - Added Readme file with improper title tags.
 - Added file install.sh - execute to install all dependancies.
-#### Folder Sockets ####
 - Added file bluez_client.py - basic bluetooth connection functionality for client.
 - Added file bluez_server.py - basic bluetooth connection functionality for server host.
-#### Folder Data_Collection ####
 - Added file gnd.py - to read accelerometer data on (0x53) i2c address.
 - Added file vdd.py - to read accelerometer data on (0x1D) i2c address.
 - Added file run_experiment.sh - to execute both gnd.py and vdd.py and logs data in .txt files.
