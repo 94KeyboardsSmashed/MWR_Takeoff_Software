@@ -3,6 +3,12 @@ This changelog will document all notable changes to this file as per NASA
 request to keep detailed documentation for our Flight Readiness Review (FRR).
 
 ## [Unreleased]
+## [Alpha Release Candidate v0.1.1] - 2018-02-05
+### Added
+- Added easy X, Y, Z calibration values in settings.py.
+### Changed
+- install.sh overhauled to install dependancies to python3.
+- Updated readme to do list.
 
 ## [Alpha Release Candidate v0.1.0] - 2018-02-04
 ### Added

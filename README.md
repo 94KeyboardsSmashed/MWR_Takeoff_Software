@@ -65,7 +65,10 @@ construction.
 This software and all associated files are under the MIT license.
 
 ## To do
-- Integrate bluetooth into data collection
-- Create a system to find a random host for bluetooth communication
-- Hardware tests. Two neopixels possible?
-- Run a start up script with neopixel lights for accelerometer verification
+- Integrate bluetooth into data collection?
+- Ensure that raspberry pis sync to online time when connected to internet (bash script?)
+- Ensure that all raspberry pis start recording when one accelerometer detects launch (or 2 or 3?)
+- Create an easy way to switch the pis from lanch mode to rocket fair mode
+- Test hardware for heat
+- Test hardware for stress
+- 

@@ -41,3 +41,8 @@ RESTING_THRESHOLD = 2500
 
 #: Max amount of memory available for each file in bytes
 MEM_MAX = 2000000
+
+#: XYZ calibration values
+CAL_X = 0
+CAL_Y = 0 
+CAL_Z = 0

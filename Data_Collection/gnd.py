@@ -52,7 +52,7 @@ if __name__ == '__main__':
     RESTING = 0
 
     # Define accelerometers (named after rivers)
-    YANGTZE = raspi_accel_lib.ADXL345(0x53)
+    YANGTZE = raspi_accel_lib.ADXL345(st.CAL_X, st.CAL_Y, st.CAL_Z, 0x53)
 
     # Startup Accelerometer
     YANGTZE.accel_startup(st.GFORCE)

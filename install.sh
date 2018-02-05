@@ -20,4 +20,4 @@ sudo apt-get install swig
 git clone https://github.com/jgarff/rpi_ws281x.git
 cd rpi_ws281x
 scons
-sudo python /home/pi/rpi_ws281x/python/setup.py build
+sudo python3 /home/pi/rpi_ws281x/python/setup.py build
