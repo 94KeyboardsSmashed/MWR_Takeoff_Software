@@ -4,16 +4,21 @@ request to keep detailed documentation for our Flight Readiness Review (FRR).
 
 ## [Unreleased]
 
-## [Alpha v0.0.5] - 2018-02-04
+## [Alpha Release Candidate v0.1.0] - 2018-02-04
+### Added
+- Added second trigger to unwind circular buffer when other accelerometers are unwound.
 ### Removed
 - Removed file startup.py
-- Removed all references to neopixels in vdd.py and gnd.py
+- Removed all references to neopixels in vdd.py and gnd.py.
+- Removed neopixel constant values from settings.py.
 ### Changed
 - Restructured changelog format
-- run_experiment.sh now prints "Working..." instead of executing startup.py
-- Max memory limit that stops gnd.py based on the size of loggnd.txt shortened from 5 MB to 2 MB (around 6:40 min)
-- Max memory limit that stops vdd.py based on the size of logvdd.txt shortened from 5 MB to 2 MB (around 6:40 min)
-- Renamed accelerometer with address (0x53) from INDUS to YANGTZEE
+- run_experiment.sh now prints "Working..." instead of executing startup.py.
+- Max memory limit that stops gnd.py based on the size of loggnd.txt shortened from 5 MB to 2 MB (around 6:40 min).
+- Max memory limit that stops vdd.py based on the size of logvdd.txt shortened from 5 MB to 2 MB (around 6:40 min).
+- Takeoff Threshold constant in settings.py increased from 3gs to 5gs.
+- Renamed accelerometer with address (0x53) from INDUS to YANGTZE.
+- Range of accelerometers increased from +-8g to +-16gs.
 
 ## [Alpha v0.0.4] - 2018-02-03
 ### Added

@@ -65,7 +65,8 @@ if __name__ == '__main__':
     # flush when launched.
     while True:
         CIRCULAR_BUFF.append(YANGTZE.string_output())
-        if YANGTZE.accel_magnitude(True) > st.TAKEOFF_THRESHOLD:
+        # If this accelerometer or other accelerometers in network detect launch. Very rudimentary at the moment.
+        if YANGTZE.accel_magnitude(True) > st.TAKEOFF_THRESHOLD or path.getsize('logvdd.txt') > 2000:
             BUFFER_DATA = list(CIRCULAR_BUFF)
             print('\n'.join(BUFFER_DATA))
             sys.stdout.flush()

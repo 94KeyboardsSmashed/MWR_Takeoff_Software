@@ -15,7 +15,6 @@
 #
 #
 """
-import neopixel_lib as neopxl
 
 ##Accelerometer Settings:
 #: Max Capacity for circular buffer memory
@@ -28,7 +27,7 @@ GFORCE = False
 ACCEL_RESPONSE = 10
 
 #: Amount of Gs needed to register vehicle liftoff
-TAKEOFF_THRESHOLD = 3
+TAKEOFF_THRESHOLD = 5
 
 #: Amount of G deviation from zero that counts the vehicle as 'landed'
 LANDING_THRESHOLD = 0
@@ -42,29 +41,3 @@ RESTING_THRESHOLD = 2500
 
 #: Max amount of memory available for each file in bytes
 MEM_MAX = 2000000
-
-##Neopixel Settings
-#: Amount of time needed in testing stage (seconds)
-TEST_LENGTH = 10
-
-#: Neopixel Ring Hardware Constants Set 1
-LED_COUNT_1 = 24
-LED_PIN_1 = 18
-LED_FREQ_HZ_1 = 800000
-LED_DMA_1 = 5
-LED_BRIGHTNESS_1 = 16
-LED_INVERT_1 = False
-
-#: Neopixel Ring Hardware Constants Set 2
-LED_COUNT_2 = 24
-LED_PIN_2 = 13
-LED_FREQ_HZ_2 = 800000
-LED_DMA_2 = 5
-LED_BRIGHTNESS_2 = 16
-LED_INVERT_2 = False
-
-#Color Values
-RED = neopxl.color_value(255, 0, 0)
-GREEN = neopxl.color_value(0, 255, 0)
-BLUE = neopxl.color_value(0, 0, 255)
-MAGENTA = neopxl.color_value(255, 0, 255)

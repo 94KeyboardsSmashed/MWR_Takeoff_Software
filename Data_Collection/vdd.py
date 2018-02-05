@@ -63,7 +63,8 @@ if __name__ == '__main__':
     # flush when launched.
     while True:
         CIRCULAR_BUFF.append(INDUS.string_output())
-        if INDUS.accel_magnitude(True) > st.TAKEOFF_THRESHOLD:
+        # If this accelerometer or other accelerometers in network detect launch. Very rudimentary at the moment.
+        if INDUS.accel_magnitude(True) > st.TAKEOFF_THRESHOLD or path.getsize('loggnd.txt') > 2000:
             BUFFER_DATA = list(CIRCULAR_BUFF)
             print('\n'.join(BUFFER_DATA))
             sys.stdout.flush()

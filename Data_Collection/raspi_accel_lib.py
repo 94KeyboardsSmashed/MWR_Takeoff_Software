@@ -52,7 +52,7 @@ class ADXL345:
     def __init__(self, address=0x53):
         self.address = address
         self.set_bandwidth_rate(BW_RATE_100HZ)
-        self.set_range(RANGE_8G)
+        self.set_range(RANGE_16G)
         self.enable_measurement()
         self.mag_measurement = 0
 
