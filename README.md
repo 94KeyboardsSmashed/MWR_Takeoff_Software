@@ -84,7 +84,7 @@ This software and all associated files are under the MIT license.
 - Test hardware for stress
 
 ## Other MWR repos
-- [MWR_Takeoff_Software](https://github.com/94KeyboardsSmashed/MWR_Takeoff_Software)
+- [MWR_Web](https://github.com/googites/MWR_Web-/blob/master/README.md)
 - [SLI2017_Hurgus_Madison](https://github.com/94KeyboardsSmashed/SLI2017_Hurgus_Madison)
 - [MWR_PlasmaThruster](https://github.com/googites/MWR_PlasmaThuster)
 
