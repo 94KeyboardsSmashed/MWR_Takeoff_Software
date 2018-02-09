@@ -6,16 +6,16 @@
   <br>
 </h1>
 
-<h4 align="center">The software running on the payload of Maidon West Rocketry's 2018 <a href="https://www.nasa.gov/audience/forstudents/studentlaunch/home/index.html" target="_blank">SLI project</a>.</h4>
+<h4 align="center">The software running on the payload of Maidson West Rocketry's 2018 <a href="https://www.nasa.gov/audience/forstudents/studentlaunch/home/index.html" target="_blank">SLI project</a>.</h4>
 
 # Madison West Rocketry (MWR)
-Madison West Rocketry's Team Hurgus is a group of students who are studying the dampening effects of liquid vibrations in rockets. This repo is for the coding and keyboardsmashing that is needed to get useful data from the project and have a great student launch this year.
+Madison West Rocketry is a group of students who are studying the dampening effects of liquid vibrations in rockets. This repo is for the coding and keyboardsmashing that is needed to get useful data from the project and have a great student launch this year.
 
 ## Project Description
-Welcome to our repository. We are Madision West Rocketry and this is the coding for our
+Welcome to our repository.This is the software for our
 rocket payload experiment titled "Study of Damping Efficiency in Various Liquids." Considerable
 effort was made to keep only the nessesary files for this repository. For any test files and examples
-please go to https://github.com/94KeyboardsSmashed/SLI2017_Hurgus_Madison.
+please go to [SLI2017_Hurgus_Madison](https://github.com/94KeyboardsSmashed/SLI2017_Hurgus_Madison).
 
 ## Prerequisites
 In order to install the dependancies for this program do (sh install.sh). If problems arise, manually install
