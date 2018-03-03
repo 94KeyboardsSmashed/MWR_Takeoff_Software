@@ -23,14 +23,14 @@ effort was made to keep only the nessesary files for this repository. For any te
 please go to [SLI2017_Hurgus_Madison](https://github.com/94KeyboardsSmashed/SLI2017_Hurgus_Madison).
 
 ### Project Gershwin:
-- Great
-- Experimental
-- Rocket
-- Shipment
-- Hull
-- With view to measure
-- lIquid
-- vibratioNs
+- (G)reat
+- (E)xperimental
+- (R)ocket
+- (S)hipment
+- (H)ull
+- (W)ith view to measure
+- l(I)quid
+- vibratio(N)s
 
 ## Prerequisites
 In order to install the dependancies for this program do (sh install.sh). If problems arise, manually install
@@ -109,4 +109,4 @@ This software and all associated files are under the MIT license.
 - Benton Likos
 - Hyun-seok Chang
 
->>>>>>> 87196c97fa7a9f86bf9ea9ba695c04e6f9eeb76c
+
