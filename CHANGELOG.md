@@ -4,10 +4,13 @@ request to keep detailed documentation for our Flight Readiness Review (FRR).
 
 ## [Alpha Release v0.2.0] - 2018-03-02
 ### Added
-- Gershwin backronym explainer in README
+- Added Gershwin backronym explainer in README
+- Added Other MWR repos section
+- Added authors seections
 ### Changed
 - Made the readings default measure in gs
 - Circular buffer now in acceptable to gforce input
+- Made Readme cleaner and added pictures
 ### Other
 - Hardware assembled for first prototype launch on 2018-03-03
 
