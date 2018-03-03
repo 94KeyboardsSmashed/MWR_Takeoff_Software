@@ -2,7 +2,15 @@
 This changelog will document all notable changes to this file as per NASA 
 request to keep detailed documentation for our Flight Readiness Review (FRR).
 
-## [Unreleased]
+## [Alpha Release v0.2.0] - 2018-03-02
+### Added
+- Gershwin backronym explainer in README
+### Changed
+- Made the readings default measure in gs
+- Circular buffer now in acceptable to gforce input
+### Other
+- Hardware assembled for first prototype launch on 2018-03-03
+
 ## [Alpha Release Candidate v0.1.1] - 2018-02-05
 ### Added
 - Added easy X, Y, Z calibration values in settings.py.

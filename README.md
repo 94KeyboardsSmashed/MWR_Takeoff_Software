@@ -1,10 +1,21 @@
-# Madison West Rocketry Team Hurgus Payload Coding
+# Project Gershwin
+## Madison West Rocketry Team Hurgus Payload Coding
 
 ## Project Description
 Welcome to our repository. We are Madision West Rocketry and this is the coding for our
 rocket payload experiment titled "Study of Damping Efficiency in Various Liquids." Considerable
 effort was made to keep only the nessesary files for this repository. For any test files and examples
 please go to https://github.com/94KeyboardsSmashed/SLI2017_Hurgus_Madison.
+
+### Project Gershwin:
+- Great
+- Experimental
+- Rocket
+- Shipment
+- Hull
+- With view to measure
+- lIquid
+- vibratioNs
 
 ## Prerequisites
 In order to install the dependancies for this program do (sh install.sh). If problems arise, manually install
@@ -71,4 +82,3 @@ This software and all associated files are under the MIT license.
 - Create an easy way to switch the pis from lanch mode to rocket fair mode
 - Test hardware for heat
 - Test hardware for stress
-- 
