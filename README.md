@@ -1,7 +1,6 @@
-<<<<<<< HEAD
 # Project Gershwin
 ## Madison West Rocketry Team Hurgus Payload Coding
-=======
+
 <h1 align="center">
   <br>
   <a href="http://liquid.westrocketry.com/index.html"><img src="http://liquid.westrocketry.com/images/patch.png" alt="Madison West Rocketry" width="200"></a>
@@ -14,7 +13,6 @@
 
 # Madison West Rocketry (MWR)
 Madison West Rocketry is a group of students who are studying the dampening effects of liquid vibrations in rockets. This repo is for the coding and keyboardsmashing that is needed to get useful data from the project and have a great student launch this year.
->>>>>>> 87196c97fa7a9f86bf9ea9ba695c04e6f9eeb76c
 
 ## Project Description
 Welcome to our repository.This is the software for our
@@ -97,8 +95,6 @@ This software and all associated files are under the MIT license.
 - Create an easy way to switch the pis from lanch mode to rocket fair mode
 - Test hardware for heat
 - Test hardware for stress
-<<<<<<< HEAD
-=======
 
 ## Other MWR repos
 - [MWR_Web](https://github.com/googites/MWR_Web-/blob/master/README.md)
