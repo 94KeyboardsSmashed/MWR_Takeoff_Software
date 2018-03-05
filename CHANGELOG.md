@@ -2,6 +2,12 @@
 This changelog will document all notable changes to this file as per NASA 
 request to keep detailed documentation for our Flight Readiness Review (FRR).
 
+## [Beta v0.2.1] -2018-03-04
+### Changed
+- Reduced second file startup file amount from 2000 bytes to 1000 bytes
+- Increased takeoff threashold from 5 to 7 gs
+- Made circular data buffer respond to changes in measurement units
+
 ## [Alpha Release v0.2.0] - 2018-03-02
 ### Added
 - Added Gershwin backronym explainer in README
