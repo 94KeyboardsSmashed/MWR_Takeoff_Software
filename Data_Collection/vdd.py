@@ -62,9 +62,9 @@ if __name__ == '__main__':
     # Store up data in circular buffer on launch pad and
     # flush when launched.
     while True:
-        CIRCULAR_BUFF.append(INDUS.string_output())
+        CIRCULAR_BUFF.append(INDUS.string_output(st.GFORCE))
         # If this accelerometer or other accelerometers in network detect launch. Very rudimentary at the moment.
-        if INDUS.accel_magnitude(True) > st.TAKEOFF_THRESHOLD or path.getsize('loggnd.txt') > 2000:
+        if INDUS.accel_magnitude(True) > st.TAKEOFF_THRESHOLD or path.getsize('loggnd.txt') > 1000:
             BUFFER_DATA = list(CIRCULAR_BUFF)
             print('\n'.join(BUFFER_DATA))
             sys.stdout.flush()
