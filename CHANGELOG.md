@@ -2,7 +2,14 @@
 This changelog will document all notable changes to this file as per NASA 
 request to keep detailed documentation for our Flight Readiness Review (FRR).
 
-## [Beta v0.2.1] -2018-03-04
+## [Beta v0.2.2] - 2018-03-05
+### Changed
+- Made .txt readout at startup
+### Added
+- Added buzzer component code to gnd.py
+- Added buzzer channel control code in setup.py
+
+## [Beta v0.2.1] - 2018-03-04
 ### Changed
 - Reduced second file startup file amount from 2000 bytes to 1000 bytes
 - Increased takeoff threashold from 5 to 7 gs

@@ -46,3 +46,6 @@ MEM_MAX = 1000000000
 CAL_X = 0
 CAL_Y = 0 
 CAL_Z = 0
+
+# Buzzer BCM channel
+CHANNEL = 23

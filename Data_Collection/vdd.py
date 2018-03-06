@@ -57,6 +57,7 @@ if __name__ == '__main__':
 
     #Initalize .txt file by writing headers
     print('#Time,X,Y,Z')
+    print("#{}".format(INDUS.string_output(st.GFORCE)))
     sys.stdout.flush()
 
     # Store up data in circular buffer on launch pad and

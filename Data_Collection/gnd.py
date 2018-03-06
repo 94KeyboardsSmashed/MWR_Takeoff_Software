@@ -41,9 +41,11 @@ Wiring Details:
 
 import sys
 import collections
+import time
 from os import path
 import raspi_accel_lib
 import settings as st
+import RPi.GPIO as GPIO
 
 if __name__ == '__main__':
     # init global variables
@@ -57,13 +59,36 @@ if __name__ == '__main__':
     # Startup Accelerometer
     YANGTZE.accel_startup(st.GFORCE)
 
-    #Initalize .txt file by writing headers
+    # Initalize Buzzer:
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setup(st.CHANNEL, GPIO.OUT)
+
+    # Initalize .txt file by writing headers
     print('#Time,X,Y,Z')
+    print('#{}'.format(YANGTZE.string_output(st.GFORCE)))
     sys.stdout.flush()
 
     # Store up data in circular buffer on launch pad and
     # flush when launched.
+    start = time.time()
+    counter = 2
+    state = False
+
     while True:
+        if time.time() - start > 0.5:
+            start = time.time()
+            counter = counter - 0.5
+        
+        if counter <= 0 and state == False:
+            counter = 2
+            state = True
+        
+        if counter <=0 and state == True:
+            counter = 1
+            state = False
+
+        GPIO.output(st.CHANNEL, state)
+
         CIRCULAR_BUFF.append(YANGTZE.string_output(st.GFORCE))
         # If this accelerometer or other accelerometers in network detect launch. Very rudimentary at the moment.
         if YANGTZE.accel_magnitude(True) > st.TAKEOFF_THRESHOLD or path.getsize('logvdd.txt') > 1000:
@@ -95,3 +120,4 @@ if __name__ == '__main__':
         if path.getsize('loggnd.txt') > st.MEM_MAX:
             print('# Memory Stop')
             break
+    GPIO.cleanup()
