@@ -1,11 +1,11 @@
 import lightblue
 import bluetooth 
 
-  #known  
+  # known  
   target_name = "RPI"  
   file_to_send = "/MWR_TAKEOFF_SOFTWARE/loggnd.txt"  
     
-  #unknown  
+  # unknown  
   obex_port = None                 
   target_address = None  
     
