@@ -49,12 +49,15 @@ class ADXL345:
 
     address = None
 
-    def __init__(self, address=0x53):
+    def __init__(self, calx, caly, calz, address=0x53):
         self.address = address
         self.set_bandwidth_rate(BW_RATE_100HZ)
         self.set_range(RANGE_16G)
         self.enable_measurement()
         self.mag_measurement = 0
+        self.cal_x = calx
+        self.cal_y = caly
+        self.cal_z = calz
 
     def enable_measurement(self):
         """
@@ -152,6 +155,10 @@ class ADXL345:
         _x = _x * SCALE_MULTIPLIER
         _y = _y * SCALE_MULTIPLIER
         _z = _z * SCALE_MULTIPLIER
+
+        _x += self.cal_x
+        _y += self.cal_y
+        _z += self.cal_z
 
         if not gforce:
             _x = _x * EARTH_GRAVITY_MS2

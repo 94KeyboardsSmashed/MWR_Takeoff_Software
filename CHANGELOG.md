@@ -2,7 +2,37 @@
 This changelog will document all notable changes to this file as per NASA 
 request to keep detailed documentation for our Flight Readiness Review (FRR).
 
-## [Unreleased]
+## [Beta v0.2.2] - 2018-03-05
+### Changed
+- Made .txt readout at startup
+### Added
+- Added buzzer component code to gnd.py
+- Added buzzer channel control code in setup.py
+
+## [Beta v0.2.1] - 2018-03-04
+### Changed
+- Reduced second file startup file amount from 2000 bytes to 1000 bytes
+- Increased takeoff threashold from 5 to 7 gs
+- Made circular data buffer respond to changes in measurement units
+
+## [Alpha Release v0.2.0] - 2018-03-02
+### Added
+- Added Gershwin backronym explainer in README
+- Added Other MWR repos section
+- Added authors seections
+### Changed
+- Made the readings default measure in gs
+- Circular buffer now in acceptable to gforce input
+- Made Readme cleaner and added pictures
+### Other
+- Hardware assembled for first prototype launch on 2018-03-03
+
+## [Alpha Release Candidate v0.1.1] - 2018-02-05
+### Added
+- Added easy X, Y, Z calibration values in settings.py.
+### Changed
+- install.sh overhauled to install dependancies to python3.
+- Updated readme to do list.
 
 ## [Alpha Release Candidate v0.1.0] - 2018-02-04
 ### Added
