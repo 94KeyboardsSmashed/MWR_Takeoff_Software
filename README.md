@@ -20,14 +20,14 @@ effort was made to keep only the nessesary files for this repository. For any te
 please go to [SLI2017_Hurgus_Madison](https://github.com/94KeyboardsSmashed/SLI2017_Hurgus_Madison).
 
 ### Project Gershwin:
-- (G)reat
-- (E)xperimental
-- (R)ocket
-- (S)hipment
+- (G)ood
+- (E)mperical
+- (R)okketi
+- (S)hip
 - (H)ull
 - (W)ith view to measure
 - l(I)quid
-- vibratio(N)s
+- (N)atural frequences
 
 ## Prerequisites
 In order to install the dependancies for this program do (sh install.sh). If problems arise, manually install
