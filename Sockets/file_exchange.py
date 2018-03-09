@@ -3,13 +3,13 @@ import bluetooth
 
   # known  
   target_name = "RPI"  
-  file_to_send = "/MWR_TAKEOFF_SOFTWARE/loggnd.txt"  
-    
+  file_to_send = "/MWR_TAKEOFF_SOFTWARE/Data_Collection/loggnd.txt"  
+   
   # unknown  
   obex_port = None                 
   target_address = None  
     
-  print "searching for nearby devices..."  
+  print "searching for nearby device..."  
   nearby_devices = bluetooth.discover_devices()  
     
   for bdaddr in nearby_devices:  
