@@ -17,7 +17,7 @@ rocket payload experiment titled "Study of Damping Efficiency in Various Liquids
 effort was made to keep only the nessesary files for this repository. For any test files and examples
 please go to [SLI2017_Hurgus_Madison](https://github.com/94KeyboardsSmashed/SLI2017_Hurgus_Madison).
 
-### Project Gershwin:
+## Project Gershwin:
 - (G)ood
 - (E)mperical
 - (R)okketi
