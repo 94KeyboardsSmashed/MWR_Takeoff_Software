@@ -1,3 +1,10 @@
+"""
+DEPENDENCIES: 
+opexftp (see https://wiki.archlinux.org/index.php/bluetooth#ObexFS),
+lightblue (see http://lightblue.sourceforge.net/ ),
+pybluez  
+"""
+
 import lightblue
 import bluetooth 
 
