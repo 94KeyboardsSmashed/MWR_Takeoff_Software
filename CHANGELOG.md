@@ -2,6 +2,17 @@
 This changelog will document all notable changes to this file as per NASA 
 request to keep detailed documentation for our Flight Readiness Review (FRR).
 
+## [Beta v0.2.5] - 2018-03-14
+### Changed
+- setting.py max data file recording length changed to 5 mb
+### Added
+- Added buzzer component after landing
+- Added \x04 tag to terminate readout
+- Created new directory Data_Logs to hold backup log files
+- Added backup data logs that save to Data_Logs directory with linux timestamps
+- Added additional backup data logs that save to ../../Backup_Data directory with uuid
+- Added easily configureable variables in setting.py in case of recording file change.
+
 ## [Beta v0.2.2] - 2018-03-05
 ### Changed
 - Made .txt readout at startup

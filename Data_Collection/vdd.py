@@ -88,9 +88,12 @@ if __name__ == '__main__':
 
         if RESTING >= st.RESTING_THRESHOLD:
             print("#Landed")
+            print("\x04")
             sys.stdout.flush()
             break
 		
         if path.getsize('logvdd.txt') > st.MEM_MAX:
             print('# Memory Stop')
+            print("\x04")
+            sys.stdout.flush()
             break

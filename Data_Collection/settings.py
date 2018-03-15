@@ -40,7 +40,7 @@ LANDING_SENSE = -1
 RESTING_THRESHOLD = 2500
 
 #: Max amount of memory available for each file in bytes
-MEM_MAX = 1000000000
+MEM_MAX = 5000000
 
 #: XYZ calibration values
 CAL_X = 0
@@ -49,3 +49,6 @@ CAL_Z = 0
 
 # Buzzer BCM channel
 CHANNEL = 23
+
+GND_FILE = 'loggnd.txt'
+VDD_FILE = 'logvdd.txt'

@@ -15,6 +15,7 @@ Accel libraries adapted form ADXL345 Python library for Raspberry Pi by Jonathan
 import time
 import math
 import smbus
+import RPi.GPIO as GPIO
 
 # select the correct i2c bus for this revision of Raspberry Pi
 REVISION = ([l[12:-1] for l in open('/proc/cpuinfo', 'r').readlines() if l[:8] == "Revision"]+['0000'])[0]
@@ -43,6 +44,50 @@ RANGE_16G = 0x03
 
 MEASURE = 0x08
 AXES_DATA = 0x32
+
+def buzzer_beep(start_counter, start_time, channel, state=False, ontime=0.1, offtime=2):
+    """
+    Beeps the beeper based on ontime and offtime
+
+    Parameters
+    ----------
+    start_counter : float (or int)
+        Time between interation at the start
+    
+    start_time : float (or int)
+        Time at the start of the command execution in unix epoch time
+
+    channel : int
+        GPIO pin output, BCM
+    
+    state=False : bool
+        State of the buzzer at startup. False is off, True is on.
+    
+    ontime=0.1 : float (or int)
+        Time that the beeper is in its on state
+    
+    offtime=2 : float (or int)
+        Time that the beeper is in its off state
+
+    Returns
+    -------
+    None
+    """
+    counter = start_counter
+    timer = start_time
+    if time.time() - timer > 0.1:
+        timer = time.time()
+        counter = counter - 0.1
+        
+    if counter <= 0 and state == False:
+        ontime = counter
+        state = True
+        
+    if counter <= 0 and state == True:
+        offtime = counter
+        state = False
+
+    GPIO.output(channel, state)
 
 class ADXL345:
     """Main Class for everything to do with the ADXL345"""
@@ -136,7 +181,6 @@ class ADXL345:
         -------
         dict
             {"x": x measurement, "y": y measurement, "z": z measurement}
-
         """
         _bytes = BUS.read_i2c_block_data(self.address, AXES_DATA, 6)
 
@@ -188,7 +232,6 @@ class ADXL345:
         -------
         str
             'time, x measurement, y measurment, z measurement'
-
         """
         axes = self.get_axes(gees)
         return "{},{},{},{}".format(time.time(), axes['x'], axes['y'], axes['z'])

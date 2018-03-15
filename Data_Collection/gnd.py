@@ -61,6 +61,7 @@ if __name__ == '__main__':
 
     # Initalize Buzzer:
     GPIO.setmode(GPIO.BCM)
+    GPIO.setwarnings(False)
     GPIO.setup(st.CHANNEL, GPIO.OUT)
 
     # Initalize .txt file by writing headers
@@ -71,16 +72,16 @@ if __name__ == '__main__':
     # Store up data in circular buffer on launch pad and
     # flush when launched.
     start = time.time()
-    counter = 2
+    counter = 1
     state = False
 
     while True:
-        if time.time() - start > 0.5:
+        if time.time() - start > 0.1:
             start = time.time()
-            counter = counter - 0.5
+            counter = counter - 0.1
         
         if counter <= 0 and state == False:
-            counter = 2
+            counter = 0.1
             state = True
         
         if counter <=0 and state == True:
@@ -114,10 +115,27 @@ if __name__ == '__main__':
 
         if RESTING >= st.RESTING_THRESHOLD:
             print("#Landed")
+            print("\x04")
             sys.stdout.flush()
             break
 			
         if path.getsize('loggnd.txt') > st.MEM_MAX:
             print('# Memory Stop')
+            print("\x04")
+            sys.stdout.flush()
             break
-    GPIO.cleanup()
+        
+    while True:
+        if time.time() - start > 0.1:
+            start = time.time()
+            counter = counter - 0.1
+        
+        if counter <= 0 and state == False:
+            counter = 2
+            state = True
+        
+        if counter <=0 and state == True:
+            counter = 5
+            state = False
+
+        GPIO.output(st.CHANNEL, state)
