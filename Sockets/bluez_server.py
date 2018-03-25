@@ -1,6 +1,6 @@
 import bluetooth
 
-ADDRESS = "B8:27:EB:81:20:92"
+ADDRESS= bluetooth.read_local_bdaddr()[0]
 print(ADDRESS)
 PORT = 3
 
@@ -19,8 +19,8 @@ try:
     client, address = sock.accept()
     while True:
         data = client.recv(SIZE)
-        data = data.decode('utf-8')
-        print((address[0], data))
+        print("CALLER SAYS: {}".format(data))
+        client.send("TX from {} ACK".format(address[0]))
 except:
     print("Closing Socket")
     client.send("GOODBYE!")

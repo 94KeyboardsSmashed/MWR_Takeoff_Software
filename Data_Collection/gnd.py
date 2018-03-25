@@ -41,11 +41,9 @@ Wiring Details:
 
 import sys
 import collections
-import time
 from os import path
 import raspi_accel_lib
 import settings as st
-import RPi.GPIO as GPIO
 
 if __name__ == '__main__':
     # init global variables
@@ -54,45 +52,21 @@ if __name__ == '__main__':
     RESTING = 0
 
     # Define accelerometers (named after rivers)
-    YANGTZE = raspi_accel_lib.ADXL345(st.CAL_X, st.CAL_Y, st.CAL_Z, 0x53)
+    YANGTZE = raspi_accel_lib.ADXL345(0x53)
 
     # Startup Accelerometer
     YANGTZE.accel_startup(st.GFORCE)
 
-    # Initalize Buzzer:
-    GPIO.setmode(GPIO.BCM)
-    GPIO.setwarnings(False)
-    GPIO.setup(st.CHANNEL, GPIO.OUT)
-
-    # Initalize .txt file by writing headers
+    #Initalize .txt file by writing headers
     print('#Time,X,Y,Z')
-    print('#{}'.format(YANGTZE.string_output(st.GFORCE)))
     sys.stdout.flush()
 
     # Store up data in circular buffer on launch pad and
     # flush when launched.
-    start = time.time()
-    counter = 1
-    state = False
-
     while True:
-        if time.time() - start > 0.1:
-            start = time.time()
-            counter = counter - 0.1
-        
-        if counter <= 0 and state == False:
-            counter = 0.1
-            state = True
-        
-        if counter <=0 and state == True:
-            counter = 1
-            state = False
-
-        GPIO.output(st.CHANNEL, state)
-
-        CIRCULAR_BUFF.append(YANGTZE.string_output(st.GFORCE))
+        CIRCULAR_BUFF.append(YANGTZE.string_output())
         # If this accelerometer or other accelerometers in network detect launch. Very rudimentary at the moment.
-        if YANGTZE.accel_magnitude(True) > st.TAKEOFF_THRESHOLD or path.getsize('logvdd.txt') > 1000:
+        if YANGTZE.accel_magnitude(True) > st.TAKEOFF_THRESHOLD or path.getsize('logvdd.txt') > 2000:
             BUFFER_DATA = list(CIRCULAR_BUFF)
             print('\n'.join(BUFFER_DATA))
             sys.stdout.flush()
@@ -115,27 +89,9 @@ if __name__ == '__main__':
 
         if RESTING >= st.RESTING_THRESHOLD:
             print("#Landed")
-            print("\x04")
             sys.stdout.flush()
             break
 			
         if path.getsize('loggnd.txt') > st.MEM_MAX:
             print('# Memory Stop')
-            print("\x04")
-            sys.stdout.flush()
             break
-        
-    while True:
-        if time.time() - start > 0.1:
-            start = time.time()
-            counter = counter - 0.1
-        
-        if counter <= 0 and state == False:
-            counter = 2
-            state = True
-        
-        if counter <=0 and state == True:
-            counter = 5
-            state = False
-
-        GPIO.output(st.CHANNEL, state)

@@ -49,7 +49,7 @@ if __name__ == '__main__':
     RESTING = 0
 
     # Define accelerometers (named after rivers)
-    INDUS = raspi_accel_lib.ADXL345(st.CAL_X, st.CAL_Y, st.CAL_Z, 0x1D)
+    INDUS = raspi_accel_lib.ADXL345(0x1D)
 
     # Startup Accelerometer
     INDUS.accel_startup(st.GFORCE)
@@ -57,15 +57,14 @@ if __name__ == '__main__':
 
     #Initalize .txt file by writing headers
     print('#Time,X,Y,Z')
-    print("#{}".format(INDUS.string_output(st.GFORCE)))
     sys.stdout.flush()
 
     # Store up data in circular buffer on launch pad and
     # flush when launched.
     while True:
-        CIRCULAR_BUFF.append(INDUS.string_output(st.GFORCE))
+        CIRCULAR_BUFF.append(INDUS.string_output())
         # If this accelerometer or other accelerometers in network detect launch. Very rudimentary at the moment.
-        if INDUS.accel_magnitude(True) > st.TAKEOFF_THRESHOLD or path.getsize('loggnd.txt') > 1000:
+        if INDUS.accel_magnitude(True) > st.TAKEOFF_THRESHOLD or path.getsize('loggnd.txt') > 2000:
             BUFFER_DATA = list(CIRCULAR_BUFF)
             print('\n'.join(BUFFER_DATA))
             sys.stdout.flush()
@@ -88,12 +87,9 @@ if __name__ == '__main__':
 
         if RESTING >= st.RESTING_THRESHOLD:
             print("#Landed")
-            print("\x04")
             sys.stdout.flush()
             break
 		
         if path.getsize('logvdd.txt') > st.MEM_MAX:
             print('# Memory Stop')
-            print("\x04")
-            sys.stdout.flush()
             break
