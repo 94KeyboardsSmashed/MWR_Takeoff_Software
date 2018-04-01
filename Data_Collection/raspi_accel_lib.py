@@ -15,6 +15,7 @@ Accel libraries adapted form ADXL345 Python library for Raspberry Pi by Jonathan
 import time
 import math
 import smbus
+import RPi.GPIO as GPIO
 
 # select the correct i2c bus for this revision of Raspberry Pi
 REVISION = ([l[12:-1] for l in open('/proc/cpuinfo', 'r').readlines() if l[:8] == "Revision"]+['0000'])[0]
@@ -44,17 +45,64 @@ RANGE_16G = 0x03
 MEASURE = 0x08
 AXES_DATA = 0x32
 
+def buzzer_beep(start_counter, start_time, channel, state=False, ontime=0.1, offtime=2):
+    """
+    Beeps the beeper based on ontime and offtime
+
+    Parameters
+    ----------
+    start_counter : float (or int)
+        Time between interation at the start
+    
+    start_time : float (or int)
+        Time at the start of the command execution in unix epoch time
+
+    channel : int
+        GPIO pin output, BCM
+    
+    state=False : bool
+        State of the buzzer at startup. False is off, True is on.
+    
+    ontime=0.1 : float (or int)
+        Time that the beeper is in its on state
+    
+    offtime=2 : float (or int)
+        Time that the beeper is in its off state
+
+    Returns
+    -------
+    None
+    """
+    counter = start_counter
+    timer = start_time
+    if time.time() - timer > 0.1:
+        timer = time.time()
+        counter = counter - 0.1
+        
+    if counter <= 0 and state == False:
+        ontime = counter
+        state = True
+        
+    if counter <= 0 and state == True:
+        offtime = counter
+        state = False
+
+    GPIO.output(channel, state)
+
 class ADXL345:
     """Main Class for everything to do with the ADXL345"""
 
     address = None
 
-    def __init__(self, address=0x53):
+    def __init__(self, calx, caly, calz, address=0x53):
         self.address = address
         self.set_bandwidth_rate(BW_RATE_100HZ)
         self.set_range(RANGE_16G)
         self.enable_measurement()
         self.mag_measurement = 0
+        self.cal_x = calx
+        self.cal_y = caly
+        self.cal_z = calz
 
     def enable_measurement(self):
         """
@@ -133,7 +181,6 @@ class ADXL345:
         -------
         dict
             {"x": x measurement, "y": y measurement, "z": z measurement}
-
         """
         _bytes = BUS.read_i2c_block_data(self.address, AXES_DATA, 6)
 
@@ -152,6 +199,10 @@ class ADXL345:
         _x = _x * SCALE_MULTIPLIER
         _y = _y * SCALE_MULTIPLIER
         _z = _z * SCALE_MULTIPLIER
+
+        _x += self.cal_x
+        _y += self.cal_y
+        _z += self.cal_z
 
         if not gforce:
             _x = _x * EARTH_GRAVITY_MS2
@@ -181,7 +232,6 @@ class ADXL345:
         -------
         str
             'time, x measurement, y measurment, z measurement'
-
         """
         axes = self.get_axes(gees)
         return "{},{},{},{}".format(time.time(), axes['x'], axes['y'], axes['z'])
